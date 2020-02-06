@@ -5,8 +5,7 @@
 // http://opensource.org/licenses/MIT>, at your option. This file may not be
 // copied, modified, or distributed except according to those terms.
 
-use core::mem;
-use core::slice;
+use wasm_bindgen::__rt::core::{mem, slice};
 
 pub unsafe trait Safe {}
 

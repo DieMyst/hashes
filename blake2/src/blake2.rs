@@ -12,7 +12,7 @@ macro_rules! blake2_impl {
         use digest::InvalidOutputSize;
         use digest::generic_array::GenericArray;
         use digest::generic_array::typenum::Unsigned;
-        use core::cmp;
+        use wasm_bindgen::__rt::core::cmp;
         use byte_tools::{copy, zero};
         use crypto_mac::{Mac, MacResult, InvalidKeyLength};
 

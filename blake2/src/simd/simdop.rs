@@ -8,7 +8,7 @@
 use simd::simdty::{u32x4, u64x4};
 #[cfg(feature = "simd")] use simd::simdint;
 
-use core::ops::{Add, BitXor, Shl, Shr};
+use wasm_bindgen::__rt::core::ops::{Add, BitXor, Shl, Shr};
 
 macro_rules! impl_ops {
     ($vec:ident) => {

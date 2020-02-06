@@ -14,6 +14,12 @@ digest = "0.8"
 byte-tools = "0.3"
 crypto-mac = "0.7"
 opaque-debug = "0.2"
+wasm-bindgen = "0.2.58"
+
+console_error_panic_hook = { version = "0.1.1", optional = true }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
 
 [dev-dependencies]
 digest = { version = "0.8", features = ["dev"] }
@@ -21,7 +27,7 @@ crypto-mac = { version = "0.7", features = ["dev"] }
 hex-literal = "0.1"
 
 [features]
-default = ["std"]
+default = ["std", "console_error_panic_hook"]
 std = ["digest/std", "crypto-mac/std"]
 simd = []
 simd_opt = ["simd"]

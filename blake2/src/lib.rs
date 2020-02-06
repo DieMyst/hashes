@@ -83,7 +83,6 @@
 //!
 //! [1]: https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE2
 //! [2]: https://github.com/cesarb/blake2-rfc
-#![no_std]
 #![doc(html_logo_url =
     "https://raw.githubusercontent.com/RustCrypto/meta/master/logo_small.png")]
 #![warn(missing_docs)]
@@ -95,9 +94,9 @@
 #[macro_use] pub extern crate digest;
 extern crate byte_tools;
 pub extern crate crypto_mac;
+extern crate wasm_bindgen;
 
-#[cfg(feature = "std")]
-extern crate std;
+use wasm_bindgen::prelude::*;
 
 mod consts;
 mod as_bytes;
@@ -114,3 +113,17 @@ mod blake2s;
 pub use digest::Digest;
 pub use blake2b::{Blake2b, VarBlake2b};
 pub use blake2s::{Blake2s, VarBlake2s};
+
+#[wasm_bindgen]
+pub fn blake2b(input: &[u8]) -> Vec<u8> {
+    let mut sh = Blake2b::default();
+    sh.input(input);
+    return sh.result().to_vec();
+}
+
+#[wasm_bindgen]
+pub fn blake2s(input: &[u8]) -> Vec<u8> {
+    let mut sh = Blake2s::default();
+    sh.input(input);
+    return sh.result().to_vec();
+}
